@@ -2,4 +2,13 @@
     <string name="app_name">GHub</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="RPG">RPG</string>">
+    <string name="Roguelike">Roguelike</string>
+    <string name="Shooter">Shooter</string>
+    <string name="Destaque">Destaque</string>
+    <string name="Recomendações">Recomendações</string>
+    <string name="JogosRecomendados">JogosRecomendados</string>
+    <string name="Favoritos">Favoritos</string>
+    <string name="Search">Search</string>
+    <string name="Home">Home</string>
 </resources>

@@ -10,28 +10,31 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.luiz.ghub.R
+import com.luiz.ghub.databinding.FragmentLoginBinding
+import com.luiz.ghub.databinding.FragmentSplashBinding
 
 class LoginFragment : Fragment() {
+    private var _binding: FragmentLoginBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val btnRecover = view.findViewById<TextView>(R.id.btnRecover)
-        btnRecover.paintFlags = btnRecover.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-
-        // Navegar para RegisterFragment
-        btnRecover.setOnClickListener {
-            findNavController().navigate(R.id.action_login_to_register)
+        initListeners()
         }
 
+    private fun initListeners() {
 
-
+        binding.btnLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
     }
 }

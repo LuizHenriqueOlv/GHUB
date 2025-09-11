@@ -11,40 +11,9 @@
         android:label="Splash Screen" >
         <action
             android:id="@+id/action_splash_to_login"
-            app:destination="@id/loginFragment" />
-    </fragment>
-
-    <!-- Login -->
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.luiz.ghub.ui.auth.LoginFragment"
-        android:label="Login" >
-        <action
-            android:id="@+id/action_login_to_register"
-            app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_login_to_home"
-            app:destination="@id/homeFragment" />
-    </fragment>
-
-    <!-- Register -->
-    <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.luiz.ghub.ui.auth.RegisterFragment"
-        android:label="Register" >
-        <action
-            android:id="@+id/action_register_to_register2"
-            app:destination="@id/register2Fragment" />
-    </fragment>
-
-    <!-- Register2 -->
-    <fragment
-        android:id="@+id/register2Fragment"
-        android:name="com.luiz.ghub.ui.auth.Register2Fragment"
-        android:label="Register Step 2" >
-        <action
-            android:id="@+id/action_register2_to_home"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/authentication"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <!-- Home -->
@@ -52,4 +21,42 @@
         android:id="@+id/homeFragment"
         android:name="com.luiz.ghub.ui.HomeFragment"
         android:label="Home" />
+
+    <navigation android:id="@+id/authentication"
+        app:startDestination="@id/loginFragment">
+
+        <!-- Login -->
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.luiz.ghub.ui.auth.LoginFragment"
+            android:label="Login">
+            <action
+                android:id="@+id/action_login_to_register"
+                app:destination="@id/registerFragment"
+                />
+            <action
+                android:id="@+id/action_registerFragment_to_homeFragment"
+                app:destination="@id/homeFragment" />
+        </fragment>
+
+        <!-- Register -->
+        <fragment
+            android:id="@+id/registerFragment"
+            android:name="com.luiz.ghub.ui.auth.RegisterFragment"
+            android:label="Register">
+            <action
+                android:id="@+id/action_register_to_register2"
+                app:destination="@id/register2Fragment" />
+
+        </fragment>
+
+        <!-- Register Step 2 -->
+        <fragment
+            android:id="@+id/register2Fragment"
+            android:name="com.luiz.ghub.ui.auth.Register2Fragment"
+            android:label="Register Step 2"/>
+        <action
+            android:id="@+id/action_global_homeFragment"
+            app:destination="@id/homeFragment" />
+    </navigation>
 </navigation>

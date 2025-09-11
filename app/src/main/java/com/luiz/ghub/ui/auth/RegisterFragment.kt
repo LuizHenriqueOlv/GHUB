@@ -25,7 +25,6 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Exemplo: botão para ir para Register2Fragment
         binding.btnNextStep.setOnClickListener {
             findNavController().navigate(R.id.action_register_to_register2)
         }

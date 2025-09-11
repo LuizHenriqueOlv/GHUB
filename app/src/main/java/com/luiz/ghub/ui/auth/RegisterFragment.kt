@@ -24,10 +24,24 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListeners()
+    }
+
+    private fun initListeners() {
 
         binding.btnNextStep.setOnClickListener {
             findNavController().navigate(R.id.action_register_to_register2)
         }
+
+        binding.btnCadastroGoogle.setOnClickListener {
+            findNavController().navigate(R.id.action_register_to_register2)
+        }
+
+        binding.btnReturnLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+        }
+
+
     }
 
     override fun onDestroyView() {

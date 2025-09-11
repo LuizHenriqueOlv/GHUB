@@ -36,5 +36,13 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             findNavController().navigate(R.id.action_global_homeFragment)
         }
+
+        binding.btnGoogle.setOnClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
+
+        binding.btnCadastro.setOnClickListener {
+            findNavController().navigate(R.id.action_login_to_register)
+        }
     }
 }

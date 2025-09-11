@@ -47,6 +47,9 @@
             <action
                 android:id="@+id/action_register_to_register2"
                 app:destination="@id/register2Fragment" />
+            <action
+                android:id="@+id/action_registerFragment_to_loginFragment"
+                app:destination="@id/loginFragment" />
 
         </fragment>
 
@@ -54,7 +57,11 @@
         <fragment
             android:id="@+id/register2Fragment"
             android:name="com.luiz.ghub.ui.auth.Register2Fragment"
-            android:label="Register Step 2"/>
+            android:label="Register Step 2">
+            <action
+                android:id="@+id/action_register2Fragment_to_loginFragment"
+                app:destination="@id/loginFragment" />
+        </fragment>
         <action
             android:id="@+id/action_global_homeFragment"
             app:destination="@id/homeFragment" />

@@ -28,7 +28,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:src="@drawable/account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +94,7 @@
             android:textAlignment="center" />
 
         <ImageView
+            android:id="@+id/btnCadastroGoogle2"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -101,6 +102,7 @@
             android:src="@drawable/google" />
 
         <TextView
+            android:id="@+id/btnReturnLogin2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

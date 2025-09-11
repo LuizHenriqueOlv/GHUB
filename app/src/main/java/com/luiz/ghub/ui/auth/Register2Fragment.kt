@@ -8,22 +8,43 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.luiz.ghub.R
+import com.luiz.ghub.databinding.FragmentRegister2Binding
+import com.luiz.ghub.databinding.FragmentRegisterBinding
 
 class Register2Fragment : Fragment() {
 
+    private var _binding: FragmentRegister2Binding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_register2, container, false)
+        _binding = FragmentRegister2Binding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListeners()
 
-        val btnFinish = view.findViewById<Button>(R.id.btnFinish)
-        btnFinish?.setOnClickListener {
-            findNavController().navigate(R.id.action_register2_to_home)
+    }
+
+    private fun initListeners() {
+        binding.btnFinish.setOnClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
+
+        binding.btnCadastroGoogle2.setOnClickListener {  }
+        findNavController().navigate(R.id.action_global_homeFragment)
+
+        binding.btnReturnLogin2.setOnClickListener {
+            findNavController().navigate(R.id.action_register2Fragment_to_loginFragment)
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

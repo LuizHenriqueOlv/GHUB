@@ -10,7 +10,6 @@ import com.luiz.ghub.R
 import com.luiz.ghub.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
-
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
@@ -30,11 +29,11 @@ class RegisterFragment : Fragment() {
     private fun initListeners() {
 
         binding.btnNextStep.setOnClickListener {
-            findNavController().navigate(R.id.action_register_to_register2)
+            findNavController().navigate(R.id.action_registerFragment_to_register2Fragment)
         }
 
         binding.btnCadastroGoogle.setOnClickListener {
-            findNavController().navigate(R.id.action_register_to_register2)
+            findNavController().navigate(R.id.action_registerFragment_to_register2Fragment)
         }
 
         binding.btnReturnLogin.setOnClickListener {

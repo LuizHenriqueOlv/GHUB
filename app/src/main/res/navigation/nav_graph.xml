@@ -20,7 +20,11 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.luiz.ghub.ui.HomeFragment"
-        android:label="Home" />
+        android:label="Home" >
+        <action
+            android:id="@+id/action_homeFragment_to_authentication"
+            app:destination="@id/authentication" />
+    </fragment>
 
     <navigation android:id="@+id/authentication"
         app:startDestination="@id/loginFragment">
@@ -45,12 +49,11 @@
             android:name="com.luiz.ghub.ui.auth.RegisterFragment"
             android:label="Register">
             <action
-                android:id="@+id/action_register_to_register2"
+                android:id="@+id/action_registerFragment_to_register2Fragment"
                 app:destination="@id/register2Fragment" />
             <action
                 android:id="@+id/action_registerFragment_to_loginFragment"
                 app:destination="@id/loginFragment" />
-
         </fragment>
 
         <!-- Register Step 2 -->
@@ -61,6 +64,9 @@
             <action
                 android:id="@+id/action_register2Fragment_to_loginFragment"
                 app:destination="@id/loginFragment" />
+            <action
+                android:id="@+id/action_register2Fragment_to_homeFragment"
+                app:destination="@id/homeFragment" />
         </fragment>
         <action
             android:id="@+id/action_global_homeFragment"

@@ -12,9 +12,9 @@ import com.luiz.ghub.databinding.FragmentRegister2Binding
 import com.luiz.ghub.databinding.FragmentRegisterBinding
 
 class Register2Fragment : Fragment() {
-
     private var _binding: FragmentRegister2Binding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,11 +31,13 @@ class Register2Fragment : Fragment() {
 
     private fun initListeners() {
         binding.btnFinish.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
+            findNavController().navigate(R.id.action_register2Fragment_to_homeFragment)
         }
 
-        binding.btnCadastroGoogle2.setOnClickListener {  }
-        findNavController().navigate(R.id.action_global_homeFragment)
+        binding.btnCadastroGoogle2.setOnClickListener {
+            findNavController().navigate(R.id.action_register2Fragment_to_homeFragment)
+        }
+
 
         binding.btnReturnLogin2.setOnClickListener {
             findNavController().navigate(R.id.action_register2Fragment_to_loginFragment)

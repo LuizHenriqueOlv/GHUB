@@ -48,6 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <EditText
+            android:id="@+id/loginEmail"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:paddingStart="10dp"
@@ -62,10 +63,12 @@
             android:text="Senha" />
 
         <EditText
+            android:id="@+id/loginPassword"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:paddingStart="10dp"
             android:paddingEnd="0dp"
+            android:inputType="textPassword"
             android:background="@drawable/bg_edit_text"
 
             android:hint="Digite sua senha" />
@@ -117,6 +120,16 @@
             android:textAlignment="center"
             android:text="Sem conta? Cadastre-se"
             android:textStyle="bold"/>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
 
     </LinearLayout>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1094372371233",
+    "firebase_url": "https://ghub-57b93-default-rtdb.firebaseio.com",
+    "project_id": "ghub-57b93",
+    "storage_bucket": "ghub-57b93.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094372371233:android:5455094022cd5696656c60",
+        "android_client_info": {
+          "package_name": "com.luiz.ghub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094372371233-opn0f205lo85ni8nup0j5mp1ngkj18ik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJtpAwbkmCLt9gfP5pgs8h-ty2ZNRU6Qg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094372371233-opn0f205lo85ni8nup0j5mp1ngkj18ik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

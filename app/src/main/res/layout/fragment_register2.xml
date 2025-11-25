@@ -69,7 +69,7 @@
             android:layout_height="48dp"
             android:background="@drawable/bg_edit_text"
             android:hint="Informe sua data de nascimento dd/mm/yy"
-
+            android:inputType="date"
             android:paddingLeft="10dp" />
 
         <com.google.android.material.button.MaterialButton

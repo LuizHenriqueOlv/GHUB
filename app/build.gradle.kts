@@ -40,9 +40,9 @@ android {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:34.6.0"))
+    implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
+    implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-auth")
-    implementation("androidx.fragment:fragment-ktx:1.8.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -50,7 +50,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

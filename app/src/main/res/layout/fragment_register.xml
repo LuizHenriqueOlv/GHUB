@@ -74,7 +74,7 @@
             android:layout_height="48dp"
             android:background="@drawable/bg_edit_text"
             android:paddingLeft="10dp"
-
+            android:inputType="textPassword"
             android:hint="Digite sua senha" />
 
         <TextView
@@ -89,7 +89,7 @@
             android:layout_height="48dp"
             android:background="@drawable/bg_edit_text"
             android:paddingLeft="10dp"
-
+            android:inputType="textPassword"
             android:hint="Confirme sua senha" />
 
         <com.google.android.material.button.MaterialButton

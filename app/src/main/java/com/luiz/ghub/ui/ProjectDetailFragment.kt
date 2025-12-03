@@ -1,6 +1,8 @@
 package com.luiz.ghub.ui
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,8 +10,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.chip.Chip
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.luiz.ghub.R
 import com.luiz.ghub.databinding.FragmentProjectDetailBinding
 import com.luiz.ghub.models.Project
@@ -21,6 +27,8 @@ class ProjectDetailFragment : Fragment() {
     private var _binding: FragmentProjectDetailBinding? = null
     private val binding get() = _binding!!
 
+    private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
     private var currentProject: Project? = null
 
     override fun onCreateView(
@@ -46,10 +54,10 @@ class ProjectDetailFragment : Fragment() {
     private fun setupHeader(project: Project) {
         binding.txtDetailTitle.text = project.title
 
-        // Formatação de Moeda
         val ptBr = Locale("pt", "BR")
         val foundsFormatted = NumberFormat.getCurrencyInstance(ptBr).format(project.founds)
         val goalFormatted = NumberFormat.getCurrencyInstance(ptBr).format(project.goal)
+
         binding.txtGoalInfo.text = "$foundsFormatted / $goalFormatted"
 
         val progress = if (project.goal > 0) (project.founds / project.goal * 100).toInt() else 0
@@ -72,7 +80,66 @@ class ProjectDetailFragment : Fragment() {
 
     private fun initListeners() {
         binding.btnDonate.setOnClickListener {
-            Toast.makeText(context, "Função de doar...", Toast.LENGTH_SHORT).show()
+            showDonateDialog()
+        }
+    }
+
+    private fun showDonateDialog() {
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.dialog_donate, null)
+        val edtDonateValue = dialogView.findViewById<TextInputEditText>(R.id.edtDonateValue)
+        val btnConfirmDonate = dialogView.findViewById<MaterialButton>(R.id.btnConfirmDonate)
+
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(dialogView)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        btnConfirmDonate.setOnClickListener {
+            val valueStr = edtDonateValue.text.toString()
+            val value = valueStr.toDoubleOrNull()
+
+            if (value != null && value > 0) {
+                processDonation(value)
+                dialog.dismiss()
+            } else {
+                Toast.makeText(requireContext(), "Por favor, insira um valor válido.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        dialog.show()
+    }
+
+    private fun processDonation(amount: Double) {
+        val projectId = currentProject?.id ?: return
+        val userId = auth.currentUser?.uid
+
+        if (userId == null) {
+            Toast.makeText(requireContext(), "Você precisa estar logado para doar.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val projectRef = db.collection("projects").document(projectId)
+
+        db.runTransaction { transaction ->
+            val snapshot = transaction.get(projectRef)
+            val currentFounds = snapshot.getDouble("founds") ?: 0.0
+            val newFounds = currentFounds + amount
+
+            transaction.update(projectRef, "founds", newFounds)
+            newFounds
+        }.addOnSuccessListener { newFounds ->
+            Toast.makeText(requireContext(), "Doação realizada com sucesso!", Toast.LENGTH_LONG).show()
+
+            currentProject?.let {
+                val updatedProject = it.copy(founds = newFounds)
+                currentProject = updatedProject
+                setupHeader(updatedProject)
+            }
+
+        }.addOnFailureListener { e ->
+            Toast.makeText(requireContext(), "Erro ao processar doação", Toast.LENGTH_SHORT).show()
+            Log.e("ProjectDetail", "Erro na transação", e)
         }
     }
 

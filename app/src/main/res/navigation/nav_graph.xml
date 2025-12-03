@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/splashFragment">
 
-    <!-- Splash -->
+    <action
+        android:id="@+id/action_global_to_login"
+        app:destination="@id/authentication"
+        app:popUpTo="@id/nav_graph"
+        app:popUpToInclusive="true" />
+
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.luiz.ghub.ui.SplashFragment"
@@ -16,34 +22,51 @@
             app:popUpToInclusive="true" />
     </fragment>
 
-    <!-- Home -->
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.luiz.ghub.ui.HomeFragment"
         android:label="Home" >
         <action
-            android:id="@+id/action_homeFragment_to_authentication"
-            app:destination="@id/authentication" />
+            android:id="@+id/action_homeFragment_to_projectDetailFragment"
+            app:destination="@id/projectDetailFragment" />
     </fragment>
 
-    <navigation android:id="@+id/authentication"
+    <fragment
+        android:id="@+id/projectDetailFragment"
+        android:name="com.luiz.ghub.ui.ProjectDetailFragment"
+        android:label="ProjectDetailFragment" >
+        <action
+            android:id="@+id/action_projectDetailFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.luiz.ghub.ui.UserProfileFragment"
+        android:label="UserProfileFragment" >
+        <action
+            android:id="@+id/action_userProfileFragment_to_projectDetailFragment"
+            app:destination="@id/projectDetailFragment" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/authentication"
         app:startDestination="@id/loginFragment">
 
-        <!-- Login -->
         <fragment
             android:id="@+id/loginFragment"
             android:name="com.luiz.ghub.ui.auth.LoginFragment"
             android:label="Login">
             <action
                 android:id="@+id/action_login_to_register"
-                app:destination="@id/registerFragment"
-                />
+                app:destination="@id/registerFragment" />
             <action
-                android:id="@+id/action_registerFragment_to_homeFragment"
-                app:destination="@id/homeFragment" />
+                android:id="@+id/action_global_homeFragment"
+                app:destination="@id/homeFragment"
+                app:popUpTo="@id/nav_graph"
+                app:popUpToInclusive="true" />
         </fragment>
 
-        <!-- Register -->
         <fragment
             android:id="@+id/registerFragment"
             android:name="com.luiz.ghub.ui.auth.RegisterFragment"
@@ -56,7 +79,6 @@
                 app:destination="@id/loginFragment" />
         </fragment>
 
-        <!-- Register Step 2 -->
         <fragment
             android:id="@+id/register2Fragment"
             android:name="com.luiz.ghub.ui.auth.Register2Fragment"
@@ -66,10 +88,10 @@
                 app:destination="@id/loginFragment" />
             <action
                 android:id="@+id/action_register2Fragment_to_homeFragment"
-                app:destination="@id/homeFragment" />
+                app:destination="@id/homeFragment"
+                app:popUpTo="@id/nav_graph"
+                app:popUpToInclusive="true" />
         </fragment>
-        <action
-            android:id="@+id/action_global_homeFragment"
-            app:destination="@id/homeFragment" />
     </navigation>
+
 </navigation>
